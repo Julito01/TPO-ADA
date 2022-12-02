@@ -99,4 +99,8 @@ public class GrafoMA implements GrafoTDA {
 
         return conjuntoAdyacentes;
     }
+
+    public int getCantidadNodos() {
+        return this.cantNodos;
+    }
 }
