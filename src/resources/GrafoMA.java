@@ -87,6 +87,16 @@ public class GrafoMA implements GrafoTDA {
         return this.MAdy[o][d];
     }
 
+    public void crearVertice(GrafoTDA grafo, int nodo) {
+        grafo.agregarVertice(nodo);
+        this.cantNodos++;
+    }
+
+    public void crearArista(GrafoTDA grafo, int nodo1, int nodo2, int peso) {
+        grafo.agregarArista(nodo1, nodo2, peso);
+        grafo.agregarArista(nodo2, nodo1, peso);
+    }
+
     public ConjuntoTDA adyacentes(int v) {
         ConjuntoTDA conjuntoAdyacentes = new ConjuntoLD();
         conjuntoAdyacentes.inicializarConjunto();

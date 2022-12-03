@@ -29,4 +29,8 @@ public interface GrafoTDA {
 
     // Devuelve un conjunto de adyacentes de un vertice
     ConjuntoTDA adyacentes(int v);
+
+    void crearArista(GrafoTDA grafo, int i, int i1, int i2);
+
+    void crearVertice(GrafoTDA grafo, int i);
 }

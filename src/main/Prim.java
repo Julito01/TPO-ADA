@@ -26,50 +26,15 @@ public class Prim {
     private static ArrayList<Integer> nodosConectados = new ArrayList();
     private static ArrayList<Integer> nodosNoConectados = new ArrayList();
     private static int cantNodos;
-    private static int nodoAnterior;
     private static int nodoActual;
     private static boolean primeraVez = true;
 
-    public static void main(String[] args) {
-        GrafoTDA grafo = new GrafoMA();
-        grafo.inicializarGrafo();
-
-        for (int i = 1; i <= 8; i++) {
-            crearVertice(grafo, i);
-        }
-
-        // Aristas de Madariaga
-        crearArista(grafo, 1, 2, 30);
-        crearArista(grafo, 1, 4, 66);
-        crearArista(grafo, 1, 6, 69);
-        crearArista(grafo, 1, 7, 111);
-        crearArista(grafo, 1, 8, 32);
-        crearArista(grafo, 1, 3, 78);
-        crearArista(grafo, 1, 5, 120);
-
-        // Aristas de Pinamar
-        crearArista(grafo, 2, 3, 53);
-        crearArista(grafo, 2, 8, 25);
-
-        // Aristas de Mar de Ajó
-        crearArista(grafo, 3, 4, 103);
-
-        // Aristas de Conesa
-        crearArista(grafo, 4, 5, 100);
-
-        // Aristas de Guido
-        crearArista(grafo, 5, 6, 52);
-
-        // Aristas de Las Armas
-        crearArista(grafo, 6, 7, 43);
-
-        // Aristas de Vidal
-        crearArista(grafo, 7, 8, 109);
-
+    public Prim(GrafoTDA grafo, int cantNodos) {
+        this.cantNodos = cantNodos;
         prim(grafo);
     }
 
-    private static ArrayList prim(GrafoTDA grafo) {
+    static ArrayList prim(GrafoTDA grafo) {
         Random generator = new Random();
         int randomIndex = generator.nextInt(cantNodos);
         for (int i = 0; i < cantNodos; i++) {
@@ -82,7 +47,7 @@ public class Prim {
         ArrayList<Integer> menorCosto = armarArregloMenorCosto(grafo, nodoActual);
         ArrayList<Integer> masCercano = armarArregloMasCercano(nodoActual);
 
-        System.out.println("Nodo inicial: " + Nodos.getNodo(nodoActual -  1));
+        System.out.println("Nodo inicial: " + Nodos.getNodo(nodoActual - 1));
         System.out.println("Nodos agregados en orden:");
 
         for (int i = 0; i < cantNodos - 1; i++) {
@@ -97,7 +62,6 @@ public class Prim {
             }
 
             nodosConectados.add(nodoMenorCosto);
-            nodoAnterior = nodoActual;
             nodoActual = nodoMenorCosto;
             actualizarArregloMenorCosto(grafo, menorCosto, masCercano);
         }
@@ -166,16 +130,6 @@ public class Prim {
         }
 
         return masCercano;
-    }
-
-    private static void crearVertice(GrafoTDA grafo, int nodo) {
-        grafo.agregarVertice(nodo);
-        cantNodos++;
-    }
-
-    private static void crearArista(GrafoTDA grafo, int nodo1, int nodo2, int peso) {
-        grafo.agregarArista(nodo1, nodo2, peso);
-        grafo.agregarArista(nodo2, nodo1, peso);
     }
 
     private static int elegirMenorCosto(ArrayList<Integer> menorCosto) {
