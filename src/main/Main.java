@@ -42,6 +42,9 @@ public class Main {
         // Aristas de Vidal
         grafo.crearArista(grafo, 7, 8, 109);
 
+        System.out.println("Prim: ");
         new Prim(grafo, cantidadNodos);
+        System.out.println("Kruskal: ");
+        new Kruskal(grafo, cantidadNodos);
     }
 }

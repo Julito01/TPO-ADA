@@ -7,6 +7,7 @@ public class GrafoMA implements GrafoTDA {
     int[][] MAdy;
     int[] Etiqs;
     int cantNodos;
+    ColaPrioridadTDA cola = new ColaPrioridad();
 
     public GrafoMA() {
     }
@@ -15,6 +16,7 @@ public class GrafoMA implements GrafoTDA {
         this.MAdy = new int[n][n];
         this.Etiqs = new int[n];
         this.cantNodos = 0;
+        cola.inicializarCola();
     }
 
     public void agregarVertice(int v) {
@@ -63,10 +65,15 @@ public class GrafoMA implements GrafoTDA {
         return Vert;
     }
 
+    public ColaPrioridadTDA aristas() {
+        return cola;
+    }
+
     public void agregarArista(int v1, int v2, int peso) {
         int o = this.Vert2Indice(v1);
         int d = this.Vert2Indice(v2);
         this.MAdy[o][d] = peso;
+        cola.acolarPrioridad(v1, v2, peso);
     }
 
     public void eliminarArista(int v1, int v2) {

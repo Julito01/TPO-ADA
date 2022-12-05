@@ -1,5 +1,5 @@
 package resources;
-import apis.*;
+import apis.ConjuntoTDA;
 
 public interface GrafoTDA {
 
@@ -14,6 +14,9 @@ public interface GrafoTDA {
 
     // Devuelve un conjunto de los vertices del grafo
     ConjuntoTDA vertices();
+
+    // Devuelve un conjunto de las aristas del grafo
+    ColaPrioridadTDA aristas();
 
     // Agregar una arista
     void agregarArista(int var1, int var2, int var3);
